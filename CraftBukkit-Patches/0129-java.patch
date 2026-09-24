@@ -1,0 +1,33 @@
+From 704c2a4b5a15904d3a2f6a12775e24e8e2dbb6d4 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Thu, 24 Sep 2026 16:26:11 +0800
+Subject: [PATCH] =?UTF-8?q?=E4=BF=AE=E6=94=B9java=E7=89=88=E6=9C=AC?=
+ =?UTF-8?q?=E6=94=AF=E6=8C=81?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+
+diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
+index 5d8ebc639..acde8dcdf 100644
+--- a/src/main/java/org/bukkit/craftbukkit/Main.java
++++ b/src/main/java/org/bukkit/craftbukkit/Main.java
+@@ -155,11 +155,11 @@ public class Main {
+                 return;
+             }
+ 
+-            /*float javaVersion = Float.parseFloat(System.getProperty("java.class.version"));
+-            if (javaVersion > 56.0) {
+-                System.err.println("Unsupported Java detected (" + javaVersion + "). Only up to Java 12 is supported.");
++            float javaVersion = Float.parseFloat(System.getProperty("java.class.version"));
++            if (javaVersion < 52.0) {
++                System.err.println("Unsupported Java detected (" + javaVersion + "). Only Java 8 or higher is supported.");
+                 return;
+-            }*/
++            }
+ 
+             try {
+                 // This trick bypasses Maven Shade's clever rewriting of our getProperty call when using String literals
+-- 
+2.55.0
+
