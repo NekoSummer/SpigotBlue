@@ -1,0 +1,25 @@
+From 3ad02d40006ffbaa81db0eb63f424a9eaba0bf78 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Thu, 24 Sep 2026 21:30:59 +0800
+Subject: [PATCH] Fix-Some
+
+
+diff --git a/src/main/java/org/bukkit/command/defaults/VersionCommand.java b/src/main/java/org/bukkit/command/defaults/VersionCommand.java
+index a20f877b..be63e13a 100644
+--- a/src/main/java/org/bukkit/command/defaults/VersionCommand.java
++++ b/src/main/java/org/bukkit/command/defaults/VersionCommand.java
+@@ -43,9 +43,8 @@ public class VersionCommand extends BukkitCommand {
+         if (!testPermission(sender)) return true;
+ 
+         if (args.length == 0) {
+-            sender.sendMessage("This server is running " + ChatColor.AQUA + Bukkit.getName() + "「" + Bukkit.getCodename() + "」" + ChatColor.RESET + " version " + Bukkit.getVersion() + " (Implementing API version " + Bukkit.getBukkitVersion() + ")");
+-            // sender.sendMessage(ChatColor.YELLOW + "This is a final build for 1.13.2. Please see https://www.spigotmc.org/go/1.13.2 for details about upgrading.");
+-            // sendVersion(sender);
++            sender.sendMessage("|*| This server is running " + Bukkit.getName() + ChatColor.AQUA + "「" + Bukkit.getCodename() + "」");
++            sender.sendMessage("|*| Version: " + ChatColor.AQUA + Bukkit.getVersion() + ChatColor.RESET + " (Implementing API version " + Bukkit.getBukkitVersion() + ")");
+         } else {
+             StringBuilder name = new StringBuilder();
+ 
+-- 
+2.55.0
+
