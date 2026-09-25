@@ -1,0 +1,36 @@
+From 47240dcab2c1739ab817a2b2207e0344e8aa1637 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Fri, 25 Sep 2026 17:18:05 +0800
+Subject: [PATCH] pom-mixed
+
+
+diff --git a/pom.xml b/pom.xml
+index 092c73661..f7c82741b 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -110,11 +110,11 @@
+                 <version>0.2</version>
+                 <executions>
+                     <execution>
+-                        <id>ex-spigot</id>
++                        <id>ex-spigotblue</id>
+                         <configuration>
+                             <format>git-SpigotBlue-%s</format>
+                             <scmDirectory>../</scmDirectory>
+-                            <descriptionProperty>spigot.desc</descriptionProperty>
++                            <descriptionProperty>spigotblue.desc</descriptionProperty>
+                         </configuration>
+                         <phase>initialize</phase>
+                         <goals>
+@@ -144,7 +144,7 @@
+                         <manifestEntries>
+                             <Main-Class>org.bukkit.craftbukkit.Main</Main-Class>
+                             <Implementation-Title>CraftBukkit</Implementation-Title>
+-                            <Implementation-Version>${spigot.desc}${craftbukkit.desc}</Implementation-Version>
++                            <Implementation-Version>${spigotblue.desc}${craftbukkit.desc}</Implementation-Version>
+                             <Implementation-Vendor>${maven.build.timestamp}</Implementation-Vendor>
+                             <Specification-Title>Bukkit</Specification-Title>
+                             <Specification-Version>${api.version}</Specification-Version>
+-- 
+2.55.0
+
