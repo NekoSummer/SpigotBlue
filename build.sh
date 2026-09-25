@@ -2,6 +2,17 @@
 
 set -e
 
+# 检查 JAVA_HOME 是否已设置
+if [ -n "$JAVA_HOME" ]; then
+    echo "Using custom JAVA_HOME: $JAVA_HOME"
+    # 动态使用传入的路径，并将其加入 PATH 最前面
+    export PATH="$JAVA_HOME/bin:$PATH"
+    java -version
+else
+    echo "WARNING: JAVA_HOME is not set. Falling back to system default Java."
+    exit 1
+fi
+
 MC_VERSION="1.13.2"
 BUILD_TOOLS_URL="https://hub.spigotmc.org/jenkins/job/BuildTools/201/artifact/target/BuildTools.jar"
 BUILD_TOOLS_FILE="BuildTools.jar"
