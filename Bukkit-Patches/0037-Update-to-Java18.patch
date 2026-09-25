@@ -1,0 +1,22 @@
+From 27c64e88d89bcaea31e0abdf98fd1b12745224e5 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Fri, 25 Sep 2026 19:31:40 +0800
+Subject: [PATCH] Update to Java18
+
+
+diff --git a/pom.xml b/pom.xml
+index 5f297bda..b592ac7a 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -198,7 +198,7 @@
+                         <configuration>
+                             <signature>
+                                 <groupId>org.codehaus.mojo.signature</groupId>
+-                                <artifactId>java17</artifactId>
++                                <artifactId>java18</artifactId>
+                                 <version>1.0</version>
+                             </signature>
+                         </configuration>
+-- 
+2.55.0
+
