@@ -1,0 +1,415 @@
+From f5623845662cb75bf08e1ac6baaf2af592f3e3dc Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Fri, 25 Sep 2026 09:01:23 +0800
+Subject: [PATCH] update-snakeyaml-to-latest
+
+
+diff --git a/pom.xml b/pom.xml
+index 1bc34665..5f297bda 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -93,7 +93,7 @@
+         <dependency>
+             <groupId>org.yaml</groupId>
+             <artifactId>snakeyaml</artifactId>
+-            <version>1.33</version>
++            <version>2.7</version>
+             <scope>compile</scope>
+         </dependency>
+         <!-- annotations -->
+diff --git a/src/main/java/cn/xinyue_neko/spigot_blue/base64Coder/Base64Coder.java b/src/main/java/cn/xinyue_neko/spigot_blue/base64Coder/Base64Coder.java
+new file mode 100644
+index 00000000..c6149f58
+--- /dev/null
++++ b/src/main/java/cn/xinyue_neko/spigot_blue/base64Coder/Base64Coder.java
+@@ -0,0 +1,254 @@
++package cn.xinyue_neko.spigot_blue.base64Coder;
++/** 反编译的 */
++public class Base64Coder {
++
++    // The line separator string of the operating system.
++    private static final String systemLineSeparator = System.getProperty("line.separator");
++
++    // Mapping table from 6-bit nibbles to Base64 characters.
++    private static final char[] map1 = new char[64];
++
++    static {
++        int i = 0;
++        for (char c = 'A'; c <= 'Z'; c++) {
++            map1[i++] = c;
++        }
++        for (char c = 'a'; c <= 'z'; c++) {
++            map1[i++] = c;
++        }
++        for (char c = '0'; c <= '9'; c++) {
++            map1[i++] = c;
++        }
++        map1[i++] = '+';
++        map1[i++] = '/';
++    }
++
++    // Mapping table from Base64 characters to 6-bit nibbles.
++    private static final byte[] map2 = new byte[128];
++
++    static {
++        for (int i = 0; i < map2.length; i++) {
++            map2[i] = -1;
++        }
++        for (int i = 0; i < 64; i++) {
++            map2[map1[i]] = (byte) i;
++        }
++    }
++
++    /**
++     * Encodes a string into Base64 format. No blanks or line breaks are inserted.
++     *
++     * @param s A String to be encoded.
++     * @return A String containing the Base64 encoded data.
++     */
++    public static String encodeString(String s) {
++        return new String(encode(s.getBytes()));
++    }
++
++    /**
++     * Encodes a byte array into Base 64 format and breaks the output into lines of 76 characters.
++     * This method is compatible with <code>sun.misc.BASE64Encoder.encodeBuffer(byte[])</code>.
++     *
++     * @param in An array containing the data bytes to be encoded.
++     * @return A String containing the Base64 encoded data, broken into lines.
++     */
++    public static String encodeLines(byte[] in) {
++        return encodeLines(in, 0, in.length, 76, systemLineSeparator);
++    }
++
++    /**
++     * Encodes a byte array into Base 64 format and breaks the output into lines.
++     *
++     * @param in An array containing the data bytes to be encoded.
++     * @param iOff Offset of the first byte in <code>in</code> to be processed.
++     * @param iLen Number of bytes to be processed in <code>in</code>, starting at <code>iOff</code>.
++     * @param lineLen Line length for the output data. Should be a multiple of 4.
++     * @param lineSeparator The line separator to be used to separate the output lines.
++     * @return A String containing the Base64 encoded data, broken into lines.
++     */
++    public static String encodeLines(byte[] in, int iOff, int iLen, int lineLen,
++                                     String lineSeparator) {
++        int blockLen = (lineLen * 3) / 4;
++        if (blockLen <= 0) {
++            throw new IllegalArgumentException();
++        }
++        int lines = (iLen + blockLen - 1) / blockLen;
++        int bufLen = ((iLen + 2) / 3) * 4 + lines * lineSeparator.length();
++        StringBuilder buf = new StringBuilder(bufLen);
++        int ip = 0;
++        while (ip < iLen) {
++            int l = Math.min(iLen - ip, blockLen);
++            buf.append(encode(in, iOff + ip, l));
++            buf.append(lineSeparator);
++            ip += l;
++        }
++        return buf.toString();
++    }
++
++    /**
++     * Encodes a byte array into Base64 format. No blanks or line breaks are inserted in the output.
++     *
++     * @param in An array containing the data bytes to be encoded.
++     * @return A character array containing the Base64 encoded data.
++     */
++    public static char[] encode(byte[] in) {
++        return encode(in, 0, in.length);
++    }
++
++    /**
++     * Encodes a byte array into Base64 format. No blanks or line breaks are inserted in the output.
++     *
++     * @param in An array containing the data bytes to be encoded.
++     * @param iLen Number of bytes to process in <code>in</code>.
++     * @return A character array containing the Base64 encoded data.
++     */
++    public static char[] encode(byte[] in, int iLen) {
++        return encode(in, 0, iLen);
++    }
++
++    /**
++     * Encodes a byte array into Base64 format. No blanks or line breaks are inserted in the output.
++     *
++     * @param in An array containing the data bytes to be encoded.
++     * @param iOff Offset of the first byte in <code>in</code> to be processed.
++     * @param iLen Number of bytes to process in <code>in</code>, starting at <code>iOff</code>.
++     * @return A character array containing the Base64 encoded data.
++     */
++    public static char[] encode(byte[] in, int iOff, int iLen) {
++        int oDataLen = (iLen * 4 + 2) / 3; // output length without padding
++        int oLen = ((iLen + 2) / 3) * 4; // output length including padding
++        char[] out = new char[oLen];
++        int ip = iOff;
++        int iEnd = iOff + iLen;
++        int op = 0;
++        while (ip < iEnd) {
++            int i0 = in[ip++] & 0xff;
++            int i1 = ip < iEnd ? in[ip++] & 0xff : 0;
++            int i2 = ip < iEnd ? in[ip++] & 0xff : 0;
++            int o0 = i0 >>> 2;
++            int o1 = ((i0 & 3) << 4) | (i1 >>> 4);
++            int o2 = ((i1 & 0xf) << 2) | (i2 >>> 6);
++            int o3 = i2 & 0x3F;
++            out[op++] = map1[o0];
++            out[op++] = map1[o1];
++            out[op] = op < oDataLen ? map1[o2] : '=';
++            op++;
++            out[op] = op < oDataLen ? map1[o3] : '=';
++            op++;
++        }
++        return out;
++    }
++
++    /**
++     * Decodes a string from Base64 format. No blanks or line breaks are allowed within the Base64
++     * encoded input data.
++     *
++     * @param s A Base64 String to be decoded.
++     * @return A String containing the decoded data.
++     * @throws IllegalArgumentException If the input is not valid Base64 encoded data.
++     */
++    public static String decodeString(String s) {
++        return new String(decode(s));
++    }
++
++    /**
++     * Decodes a byte array from Base64 format and ignores line separators, tabs and blanks. CR, LF,
++     * Tab and Space characters are ignored in the input data. This method is compatible with
++     * <code>sun.misc.BASE64Decoder.decodeBuffer(String)</code>.
++     *
++     * @param s A Base64 String to be decoded.
++     * @return An array containing the decoded data bytes.
++     * @throws IllegalArgumentException If the input is not valid Base64 encoded data.
++     */
++    public static byte[] decodeLines(String s) {
++        char[] buf = new char[s.length()];
++        int p = 0;
++        for (int ip = 0; ip < s.length(); ip++) {
++            char c = s.charAt(ip);
++            if (c != ' ' && c != '\r' && c != '\n' && c != '\t') {
++                buf[p++] = c;
++            }
++        }
++        return decode(buf, 0, p);
++    }
++
++    /**
++     * Decodes a byte array from Base64 format. No blanks or line breaks are allowed within the Base64
++     * encoded input data.
++     *
++     * @param s A Base64 String to be decoded.
++     * @return An array containing the decoded data bytes.
++     * @throws IllegalArgumentException If the input is not valid Base64 encoded data.
++     */
++    public static byte[] decode(String s) {
++        return decode(s.toCharArray());
++    }
++
++    /**
++     * Decodes a byte array from Base64 format. No blanks or line breaks are allowed within the Base64
++     * encoded input data.
++     *
++     * @param in A character array containing the Base64 encoded data.
++     * @return An array containing the decoded data bytes.
++     * @throws IllegalArgumentException If the input is not valid Base64 encoded data.
++     */
++    public static byte[] decode(char[] in) {
++        return decode(in, 0, in.length);
++    }
++
++    /**
++     * Decodes a byte array from Base64 format. No blanks or line breaks are allowed within the Base64
++     * encoded input data.
++     *
++     * @param in A character array containing the Base64 encoded data.
++     * @param iOff Offset of the first character in <code>in</code> to be processed.
++     * @param iLen Number of characters to process in <code>in</code>, starting at <code>iOff</code>.
++     * @return An array containing the decoded data bytes.
++     * @throws IllegalArgumentException If the input is not valid Base64 encoded data.
++     */
++    public static byte[] decode(char[] in, int iOff, int iLen) {
++        if (iLen % 4 != 0) {
++            throw new IllegalArgumentException(
++                    "Length of Base64 encoded input string is not a multiple of 4.");
++        }
++        while (iLen > 0 && in[iOff + iLen - 1] == '=') {
++            iLen--;
++        }
++        int oLen = (iLen * 3) / 4;
++        byte[] out = new byte[oLen];
++        int ip = iOff;
++        int iEnd = iOff + iLen;
++        int op = 0;
++        while (ip < iEnd) {
++            int i0 = in[ip++];
++            int i1 = in[ip++];
++            int i2 = ip < iEnd ? in[ip++] : 'A';
++            int i3 = ip < iEnd ? in[ip++] : 'A';
++            if (i0 > 127 || i1 > 127 || i2 > 127 || i3 > 127) {
++                throw new IllegalArgumentException("Illegal character in Base64 encoded data.");
++            }
++            int b0 = map2[i0];
++            int b1 = map2[i1];
++            int b2 = map2[i2];
++            int b3 = map2[i3];
++            if (b0 < 0 || b1 < 0 || b2 < 0 || b3 < 0) {
++                throw new IllegalArgumentException("Illegal character in Base64 encoded data.");
++            }
++            int o0 = (b0 << 2) | (b1 >>> 4);
++            int o1 = ((b1 & 0xf) << 4) | (b2 >>> 2);
++            int o2 = ((b2 & 3) << 6) | b3;
++            out[op++] = (byte) o0;
++            if (op < oLen) {
++                out[op++] = (byte) o1;
++            }
++            if (op < oLen) {
++                out[op++] = (byte) o2;
++            }
++        }
++        return out;
++    }
++
++    // Dummy constructor.
++    private Base64Coder() {}
++
++} // end class Base64Coder
+\ No newline at end of file
+diff --git a/src/main/java/org/bukkit/configuration/file/YamlConfiguration.java b/src/main/java/org/bukkit/configuration/file/YamlConfiguration.java
+index ece2edf8..267f5dc2 100644
+--- a/src/main/java/org/bukkit/configuration/file/YamlConfiguration.java
++++ b/src/main/java/org/bukkit/configuration/file/YamlConfiguration.java
+@@ -14,6 +14,7 @@ import org.bukkit.configuration.ConfigurationSection;
+ import org.bukkit.configuration.InvalidConfigurationException;
+ import org.jetbrains.annotations.NotNull;
+ import org.yaml.snakeyaml.DumperOptions;
++import org.yaml.snakeyaml.LoaderOptions;
+ import org.yaml.snakeyaml.Yaml;
+ import org.yaml.snakeyaml.error.YAMLException;
+ import org.yaml.snakeyaml.representer.Representer;
+@@ -25,9 +26,10 @@ import org.yaml.snakeyaml.representer.Representer;
+ public class YamlConfiguration extends FileConfiguration {
+     protected static final String COMMENT_PREFIX = "# ";
+     protected static final String BLANK_CONFIG = "{}\n";
++    private final LoaderOptions ymlLoadOpts = new LoaderOptions();
+     private final DumperOptions yamlOptions = new DumperOptions();
+-    private final Representer yamlRepresenter = new YamlRepresenter();
+-    private final Yaml yaml = new Yaml(new YamlConstructor(), yamlRepresenter, yamlOptions);
++    private final Representer yamlRepresenter = new YamlRepresenter(yamlOptions);
++    private final Yaml yaml = new Yaml(new YamlConstructor(ymlLoadOpts), yamlRepresenter, yamlOptions);
+ 
+     @NotNull
+     @Override
+diff --git a/src/main/java/org/bukkit/configuration/file/YamlConstructor.java b/src/main/java/org/bukkit/configuration/file/YamlConstructor.java
+index 397b58c5..f5a4df10 100644
+--- a/src/main/java/org/bukkit/configuration/file/YamlConstructor.java
++++ b/src/main/java/org/bukkit/configuration/file/YamlConstructor.java
+@@ -5,6 +5,7 @@ import java.util.Map;
+ 
+ import org.jetbrains.annotations.NotNull;
+ import org.jetbrains.annotations.Nullable;
++import org.yaml.snakeyaml.LoaderOptions;
+ import org.yaml.snakeyaml.nodes.Node;
+ import org.yaml.snakeyaml.constructor.SafeConstructor;
+ import org.yaml.snakeyaml.error.YAMLException;
+@@ -14,7 +15,8 @@ import org.bukkit.configuration.serialization.ConfigurationSerialization;
+ 
+ public class YamlConstructor extends SafeConstructor {
+ 
+-    public YamlConstructor() {
++    public YamlConstructor(@NotNull LoaderOptions loaderOptions) {
++        super(loaderOptions);
+         this.yamlConstructors.put(Tag.MAP, new ConstructCustomObject());
+     }
+ 
+diff --git a/src/main/java/org/bukkit/configuration/file/YamlRepresenter.java b/src/main/java/org/bukkit/configuration/file/YamlRepresenter.java
+index 63cb3555..37cfc7aa 100644
+--- a/src/main/java/org/bukkit/configuration/file/YamlRepresenter.java
++++ b/src/main/java/org/bukkit/configuration/file/YamlRepresenter.java
+@@ -8,18 +8,20 @@ import org.bukkit.configuration.serialization.ConfigurationSerializable;
+ import org.bukkit.configuration.serialization.ConfigurationSerialization;
+ 
+ import org.jetbrains.annotations.NotNull;
++import org.yaml.snakeyaml.DumperOptions;
+ import org.yaml.snakeyaml.nodes.Node;
+ import org.yaml.snakeyaml.representer.Representer;
+ 
+ public class YamlRepresenter extends Representer {
+ 
+-    public YamlRepresenter() {
++    // 关键：显式接收 DumperOptions 并传给父类
++    public YamlRepresenter(@NotNull DumperOptions dumperOptions) {
++        super(dumperOptions);
+         this.multiRepresenters.put(ConfigurationSection.class, new RepresentConfigurationSection());
+         this.multiRepresenters.put(ConfigurationSerializable.class, new RepresentConfigurationSerializable());
+     }
+ 
+     private class RepresentConfigurationSection extends RepresentMap {
+-
+         @NotNull
+         @Override
+         public Node representData(@NotNull Object data) {
+@@ -28,7 +30,6 @@ public class YamlRepresenter extends Representer {
+     }
+ 
+     private class RepresentConfigurationSerializable extends RepresentMap {
+-
+         @NotNull
+         @Override
+         public Node representData(@NotNull Object data) {
+@@ -40,4 +41,4 @@ public class YamlRepresenter extends Representer {
+             return super.representData(values);
+         }
+     }
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/bukkit/plugin/PluginDescriptionFile.java b/src/main/java/org/bukkit/plugin/PluginDescriptionFile.java
+index 4574a965..7054ca13 100644
+--- a/src/main/java/org/bukkit/plugin/PluginDescriptionFile.java
++++ b/src/main/java/org/bukkit/plugin/PluginDescriptionFile.java
+@@ -21,6 +21,7 @@ import org.bukkit.permissions.Permission;
+ import org.bukkit.permissions.PermissionDefault;
+ import org.jetbrains.annotations.NotNull;
+ import org.jetbrains.annotations.Nullable;
++import org.yaml.snakeyaml.LoaderOptions;
+ import org.yaml.snakeyaml.Yaml;
+ import org.yaml.snakeyaml.constructor.AbstractConstruct;
+ import org.yaml.snakeyaml.constructor.SafeConstructor;
+@@ -186,7 +187,7 @@ public final class PluginDescriptionFile {
+         @Override
+         @NotNull
+         protected Yaml initialValue() {
+-            return new Yaml(new SafeConstructor() {
++            return new Yaml(new SafeConstructor(new LoaderOptions()) {
+                 {
+                     yamlConstructors.put(null, new AbstractConstruct() {
+                         @NotNull
+diff --git a/src/test/java/org/bukkit/util/io/BukkitObjectStreamTest.java b/src/test/java/org/bukkit/util/io/BukkitObjectStreamTest.java
+index d0af4a01..be06f5f2 100644
+--- a/src/test/java/org/bukkit/util/io/BukkitObjectStreamTest.java
++++ b/src/test/java/org/bukkit/util/io/BukkitObjectStreamTest.java
+@@ -10,6 +10,8 @@ import java.io.ObjectInputStream;
+ import java.io.ObjectOutputStream;
+ import java.util.List;
+ 
++import cn.xinyue_neko.spigot_blue.base64Coder.Base64Coder;
++
+ import org.bukkit.Color;
+ import org.bukkit.FireworkEffect;
+ import org.bukkit.FireworkEffect.Type;
+@@ -21,7 +23,7 @@ import org.junit.runner.RunWith;
+ import org.junit.runners.Parameterized;
+ import org.junit.runners.Parameterized.Parameter;
+ import org.junit.runners.Parameterized.Parameters;
+-import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
++//import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
+ 
+ import com.google.common.collect.ImmutableList;
+ 
+-- 
+2.55.0
+
