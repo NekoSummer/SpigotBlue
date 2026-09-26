@@ -1,0 +1,52 @@
+From 2012351c28b4d6dc17b479ed9e6f44670e50dedc Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Sat, 26 Sep 2026 09:15:49 +0800
+Subject: [PATCH] Add My Repo
+
+
+diff --git a/pom.xml b/pom.xml
+index b592ac7a..bfca4da8 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -3,7 +3,7 @@
+          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+     <modelVersion>4.0.0</modelVersion>
+ 
+-    <artifactId>spigot-api</artifactId>
++    <artifactId>spigot-blue-api</artifactId>
+     <version>1.13.2-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+@@ -19,21 +19,25 @@
+     </properties>
+ 
+     <parent>
+-        <groupId>org.spigotmc</groupId>
+-        <artifactId>spigot-parent</artifactId>
++        <groupId>cn.xinyue-neko.blue</groupId>
++        <artifactId>spigot-blue-parent</artifactId>
+         <version>dev-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+     <distributionManagement>
+-        <repository>
++        <!-- <repository>
+             <id>spigotmc-releases</id>
+             <url>https://hub.spigotmc.org/nexus/content/repositories/releases/</url>
+         </repository>
+         <snapshotRepository>
+             <id>spigotmc-snapshots</id>
+             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+-        </snapshotRepository>
++        </snapshotRepository> -->
++        <repository>
++            <id>github</id>
++            <url>https://maven.pkg.github.com/NekoSummer/summer</url>
++        </repository>
+     </distributionManagement>
+ 
+     <repositories>
+-- 
+2.55.0
+

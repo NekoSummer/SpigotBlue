@@ -1,0 +1,39 @@
+From 579da454059051699e55a1c20c2d724402f87377 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Sat, 26 Sep 2026 09:15:49 +0800
+Subject: [PATCH] Add My Repo
+
+
+diff --git a/pom.xml b/pom.xml
+index f7c82741b..f395411b3 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -31,8 +31,8 @@
+ 
+     <dependencies>
+         <dependency>
+-            <groupId>org.spigotmc</groupId>
+-            <artifactId>spigot-api</artifactId>
++            <groupId>cn.xinyue-neko.blue</groupId>
++            <artifactId>spigot-blue-api</artifactId>
+             <version>${project.version}</version>
+             <scope>compile</scope>
+         </dependency>
+@@ -88,9 +88,14 @@
+ 
+             Please see https://www.spigotmc.org/go/maven for more information.
+         -->
++        <!--
+         <repository>
+             <id>spigotmc-public</id>
+             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
++        </repository> -->
++        <repository>
++            <id>github</id>
++            <url>https://maven.pkg.github.com/NekoSummer/summer</url>
+         </repository>
+     </repositories>
+ 
+-- 
+2.55.0
+

@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.spigotmc</groupId>
-    <artifactId>spigot-parent</artifactId>
+    <groupId>cn.xinyue-neko.blue</groupId>
+    <artifactId>spigot-blue-parent</artifactId>
     <version>dev-SNAPSHOT</version>
     <packaging>pom</packaging>
 
