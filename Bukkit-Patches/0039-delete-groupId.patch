@@ -1,0 +1,35 @@
+From 602080a5b6b272de578a8d2ca775d84807523d5f Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Sat, 26 Sep 2026 09:17:59 +0800
+Subject: [PATCH] delete groupId
+
+
+diff --git a/pom.xml b/pom.xml
+index bfca4da8..5b323c37 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -3,6 +3,7 @@
+          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+     <modelVersion>4.0.0</modelVersion>
+ 
++    <groupId>cn.xinyue-neko.blue</groupId>
+     <artifactId>spigot-blue-api</artifactId>
+     <version>1.13.2-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+@@ -18,13 +19,6 @@
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     </properties>
+ 
+-    <parent>
+-        <groupId>cn.xinyue-neko.blue</groupId>
+-        <artifactId>spigot-blue-parent</artifactId>
+-        <version>dev-SNAPSHOT</version>
+-        <relativePath>../pom.xml</relativePath>
+-    </parent>
+-
+     <distributionManagement>
+         <!-- <repository>
+             <id>spigotmc-releases</id>
+-- 
+2.55.0
+
