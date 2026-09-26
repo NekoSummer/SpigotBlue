@@ -1,14 +1,14 @@
-From 12a9dc035da3c157498445ee2483e20695178a1e Mon Sep 17 00:00:00 2001
+From 0b860a71d9d445bfc60ebfff8d55b2ed6cfc4907 Mon Sep 17 00:00:00 2001
 From: XinYueNeko <3649745663@qq.com>
 Date: Sun, 13 Sep 2026 10:01:53 +0800
 Subject: [PATCH] update-commons-lang-to-3
 
 
 diff --git a/pom.xml b/pom.xml
-index cacceef4..1bc34665 100644
+index c3f86e03..bfca4da8 100644
 --- a/pom.xml
 +++ b/pom.xml
-@@ -58,9 +58,9 @@
+@@ -62,9 +62,9 @@
  
      <dependencies>
          <dependency>
@@ -197,7 +197,7 @@ index 1e6e7033..f21bba38 100644
  import org.bukkit.ChatColor;
  import org.bukkit.command.CommandSender;
 diff --git a/src/main/java/org/bukkit/command/defaults/VersionCommand.java b/src/main/java/org/bukkit/command/defaults/VersionCommand.java
-index e31cbcbb..a20f877b 100644
+index fc23d33f..be63e13a 100644
 --- a/src/main/java/org/bukkit/command/defaults/VersionCommand.java
 +++ b/src/main/java/org/bukkit/command/defaults/VersionCommand.java
 @@ -5,7 +5,7 @@ import java.util.ArrayList;
@@ -249,7 +249,7 @@ index ba3c93fe..48ce1464 100644
  
  import java.io.BufferedReader;
 diff --git a/src/main/java/org/bukkit/configuration/file/YamlConfiguration.java b/src/main/java/org/bukkit/configuration/file/YamlConfiguration.java
-index 441e7ff9..ece2edf8 100644
+index f5f49682..267f5dc2 100644
 --- a/src/main/java/org/bukkit/configuration/file/YamlConfiguration.java
 +++ b/src/main/java/org/bukkit/configuration/file/YamlConfiguration.java
 @@ -7,7 +7,7 @@ import java.io.Reader;
