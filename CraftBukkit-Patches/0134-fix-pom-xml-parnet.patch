@@ -1,0 +1,27 @@
+From 48b92de61cb223676255574a87ce59b63a532aab Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Sat, 3 Oct 2026 20:25:17 +0800
+Subject: [PATCH] fix-pom-xml-parnet
+
+
+diff --git a/pom.xml b/pom.xml
+index f395411b3..1862bff94 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -23,10 +23,11 @@
+     </properties>
+ 
+     <parent>
+-        <groupId>org.spigotmc</groupId>
+-        <artifactId>spigot-parent</artifactId>
++        <groupId>cn.xinyue-neko.blue</groupId>
++        <artifactId>spigot-blue-parent</artifactId>
+         <version>dev-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
++
+     </parent>
+ 
+     <dependencies>
+-- 
+2.56.0
+
