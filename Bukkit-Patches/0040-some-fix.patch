@@ -1,0 +1,21 @@
+From 86948f6e2332b151e48a76d900f474f9a8df5618 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Sun, 4 Oct 2026 07:18:42 +0800
+Subject: [PATCH] some-fix
+
+
+diff --git a/src/test/java/org/bukkit/util/io/BukkitObjectStreamTest.java b/src/test/java/org/bukkit/util/io/BukkitObjectStreamTest.java
+index be06f5f2..ccea3313 100644
+--- a/src/test/java/org/bukkit/util/io/BukkitObjectStreamTest.java
++++ b/src/test/java/org/bukkit/util/io/BukkitObjectStreamTest.java
+@@ -23,7 +23,6 @@ import org.junit.runner.RunWith;
+ import org.junit.runners.Parameterized;
+ import org.junit.runners.Parameterized.Parameter;
+ import org.junit.runners.Parameterized.Parameters;
+-//import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
+ 
+ import com.google.common.collect.ImmutableList;
+ 
+-- 
+2.56.0
+

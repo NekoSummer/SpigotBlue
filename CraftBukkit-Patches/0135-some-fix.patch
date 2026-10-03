@@ -1,0 +1,24 @@
+From 0c70ff1aecd51d10df61f4747234bb30e8e2a87d Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Sun, 4 Oct 2026 07:18:42 +0800
+Subject: [PATCH] some-fix
+
+
+diff --git a/src/main/java/com/mojang/brigadier/tree/CommandNode.java b/src/main/java/com/mojang/brigadier/tree/CommandNode.java
+index 98592a3e6..7309c504c 100644
+--- a/src/main/java/com/mojang/brigadier/tree/CommandNode.java
++++ b/src/main/java/com/mojang/brigadier/tree/CommandNode.java
+@@ -27,8 +27,8 @@ import net.minecraft.server.CommandListenerWrapper; // CraftBukkit
+ 
+ public abstract class CommandNode<S> implements Comparable<CommandNode<S>> {
+     private Map<String, CommandNode<S>> children = Maps.newLinkedHashMap();
+-    private Map<String, LiteralCommandNode<S>> literals = Maps.newLinkedHashMap();
+-    private Map<String, ArgumentCommandNode<S, ?>> arguments = Maps.newLinkedHashMap();
++    private final Map<String, LiteralCommandNode<S>> literals = Maps.newLinkedHashMap();
++    private final Map<String, ArgumentCommandNode<S, ?>> arguments = Maps.newLinkedHashMap();
+     private final Predicate<S> requirement;
+     private final CommandNode<S> redirect;
+     private final RedirectModifier<S> modifier;
+-- 
+2.56.0
+
