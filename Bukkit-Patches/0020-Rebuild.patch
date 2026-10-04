@@ -1,0 +1,90 @@
+From f0d081af0bf26f03d4cb5fcbca593b7e26d0dda7 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Sun, 4 Oct 2026 14:13:50 +0800
+Subject: [PATCH] Rebuild
+
+
+diff --git a/pom.xml b/pom.xml
+index b3369ecf..48d279a8 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -1,4 +1,4 @@
+-
++<?xml version="1.0" encoding="UTF-8" ?>
+ <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+     <modelVersion>4.0.0</modelVersion>
+@@ -14,8 +14,8 @@
+ 
+     <properties>
+         <skipTests>true</skipTests>
+-        <maven.compiler.source>1.7</maven.compiler.source>
+-        <maven.compiler.target>1.7</maven.compiler.target>
++        <maven.compiler.source>8</maven.compiler.source>
++        <maven.compiler.target>8</maven.compiler.target>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     </properties>
+ 
+@@ -67,14 +67,14 @@
+         <dependency>
+             <groupId>com.google.guava</groupId>
+             <artifactId>guava</artifactId>
+-            <version>21.0</version>
++            <version>33.7.0-jre</version>
+             <scope>compile</scope>
+         </dependency>
+         <!-- bundled with Minecraft, should be kept in sync -->
+         <dependency>
+             <groupId>com.google.code.gson</groupId>
+             <artifactId>gson</artifactId>
+-            <version>2.8.0</version>
++            <version>2.14.0</version>
+             <scope>compile</scope>
+         </dependency>
+         <dependency>
+@@ -87,7 +87,7 @@
+         <dependency>
+             <groupId>org.yaml</groupId>
+             <artifactId>snakeyaml</artifactId>
+-            <version>1.23</version>
++            <version>1.33</version>
+             <scope>compile</scope>
+         </dependency>
+         <!-- annotations -->
+@@ -101,7 +101,7 @@
+         <dependency>
+             <groupId>junit</groupId>
+             <artifactId>junit</artifactId>
+-            <version>4.12</version>
++            <version>4.13.2</version>
+             <scope>test</scope>
+         </dependency>
+         <dependency>
+@@ -113,7 +113,7 @@
+         <dependency>
+             <groupId>org.ow2.asm</groupId>
+             <artifactId>asm-tree</artifactId>
+-            <version>7.1</version>
++            <version>9.10.1</version>
+             <scope>test</scope>
+         </dependency>
+     </dependencies>
+diff --git a/src/main/java/org/bukkit/command/defaults/VersionCommand.java b/src/main/java/org/bukkit/command/defaults/VersionCommand.java
+index 88bde6a9..be765a5e 100644
+--- a/src/main/java/org/bukkit/command/defaults/VersionCommand.java
++++ b/src/main/java/org/bukkit/command/defaults/VersionCommand.java
+@@ -43,9 +43,8 @@ public class VersionCommand extends BukkitCommand {
+         if (!testPermission(sender)) return true;
+ 
+         if (args.length == 0) {
+-            sender.sendMessage("This server is running " + Bukkit.getName() + " version " + Bukkit.getVersion() + " (Implementing API version " + Bukkit.getBukkitVersion() + ")");
+-            sender.sendMessage(ChatColor.YELLOW + "This is a final build for 1.13.2. Please see https://www.spigotmc.org/go/1.13.2 for details about upgrading.");
+-            // sendVersion(sender);
++            sender.sendMessage("This server is running " + ChatColor.AQUA + Bukkit.getName() + ChatColor.RESET + " version " + Bukkit.getVersion() + " (Implementing API version " + Bukkit.getBukkitVersion() + ")");
++            sender.sendMessage(ChatColor.YELLOW + "This is a final build for 1.13.2 by " + ChatColor.AQUA + "XinYueNeko(https://github.com/NewmoomCat)" + ChatColor.RESET);
+         } else {
+             StringBuilder name = new StringBuilder();
+ 
+-- 
+2.56.0
+

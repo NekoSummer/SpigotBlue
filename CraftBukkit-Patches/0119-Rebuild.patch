@@ -1,0 +1,73 @@
+From 95d87adad65ee4399643ba79ec93afa1c1b0dcee Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Sun, 4 Oct 2026 14:13:50 +0800
+Subject: [PATCH] Rebuild
+
+
+diff --git a/pom.xml b/pom.xml
+index 23ab857e0..07132c630 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -1,7 +1,8 @@
++<?xml version="1.0" encoding="UTF-8" ?>
+ <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+     <modelVersion>4.0.0</modelVersion>
+-    <groupId>org.spigotmc</groupId>
++
+     <artifactId>spigot</artifactId>
+     <packaging>jar</packaging>
+     <version>1.13.2-R0.1-SNAPSHOT</version>
+@@ -56,20 +57,20 @@
+         <dependency>
+             <groupId>org.xerial</groupId>
+             <artifactId>sqlite-jdbc</artifactId>
+-            <version>3.25.2</version>
++            <version>3.45.0.0</version>
+             <scope>runtime</scope>
+         </dependency>
+         <dependency>
+             <groupId>mysql</groupId>
+             <artifactId>mysql-connector-java</artifactId>
+-            <version>5.1.47</version>
++            <version>8.0.33</version>
+             <scope>runtime</scope>
+         </dependency>
+         <!-- testing -->
+         <dependency>
+             <groupId>junit</groupId>
+             <artifactId>junit</artifactId>
+-            <version>4.12</version>
++            <version>4.13.2</version>
+             <scope>test</scope>
+         </dependency>
+         <dependency>
+diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
+index 72de40434..43fc8946f 100644
+--- a/src/main/java/net/minecraft/server/MinecraftServer.java
++++ b/src/main/java/net/minecraft/server/MinecraftServer.java
+@@ -1555,7 +1555,7 @@ public abstract class MinecraftServer implements IAsyncTaskHandler, IMojangStati
+             try {
+                 return Futures.immediateFuture(callable.call());
+             } catch (Exception exception) {
+-                return Futures.immediateFailedCheckedFuture(exception);
++                return Futures.immediateFailedFuture(exception);
+             }
+         }
+     }
+diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
+index 3b70a2857..7758f2d04 100644
+--- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
++++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
+@@ -164,7 +164,7 @@ import org.bukkit.event.server.TabCompleteEvent;
+ import net.md_5.bungee.api.chat.BaseComponent;
+ 
+ public final class CraftServer implements Server {
+-    private final String serverName = "CraftBukkit";
++    private final String serverName = "SpigotBlue";
+     private final String serverVersion;
+     private final String bukkitVersion = Versioning.getBukkitVersion();
+     private final Logger logger = Logger.getLogger("Minecraft");
+-- 
+2.56.0
+

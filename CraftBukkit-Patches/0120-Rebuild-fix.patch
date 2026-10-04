@@ -1,0 +1,24 @@
+From 1718f083779bd867564e91345d2bbc0c230423b3 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Sun, 4 Oct 2026 14:17:03 +0800
+Subject: [PATCH] Rebuild fix
+
+
+diff --git a/pom.xml b/pom.xml
+index 07132c630..b6854072e 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -18,8 +18,8 @@
+         <buildtag.prefix>git-Bukkit-</buildtag.prefix>
+         <buildtag.suffix></buildtag.suffix>
+         <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
+-        <maven.compiler.source>1.8</maven.compiler.source>
+-        <maven.compiler.target>1.8</maven.compiler.target>
++        <maven.compiler.source>8</maven.compiler.source>
++        <maven.compiler.target>8</maven.compiler.target>
+     </properties>
+ 
+     <parent>
+-- 
+2.56.0
+
