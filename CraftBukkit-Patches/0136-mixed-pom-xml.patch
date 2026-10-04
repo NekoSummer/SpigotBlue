@@ -1,0 +1,22 @@
+From 8b08c4777a09ae43565daa648f0042f78d738860 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Sun, 4 Oct 2026 08:27:14 +0800
+Subject: [PATCH] mixed-pom-xml
+
+
+diff --git a/pom.xml b/pom.xml
+index 1862bff94..2bb65ae11 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -12,7 +12,7 @@
+     <properties>
+         <skipTests>true</skipTests>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+-        <api.version>unknown</api.version>
++        <api.version>${project.version}</api.version>
+         <minecraft.version>1.13.2</minecraft.version>
+         <minecraft_version>1_13_R2</minecraft_version>
+         <buildtag.prefix>git-Bukkit-</buildtag.prefix>
+-- 
+2.56.0
+

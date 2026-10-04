@@ -47,9 +47,9 @@ cd ..
 JAR=$(find "$WORK_DIR/SpigotBlue-Server/target" -maxdepth 1 -name "spigot-blue-*.jar" ! -name "original-*" | head -n 1)
 
 if [ -n "$JAR" ]; then
-  cp "$JAR" "./spigot-blue-$MC_VERSION.jar"
-  echo "Done!"
+    cp "$JAR" "./spigot-blue-$MC_VERSION.jar"
+    echo "Done!"
 else
-  echo "ERROR! "
-  exit 1
+    echo "ERROR! "
+    exit 1
 fi
