@@ -1,0 +1,22 @@
+From 02e5f6aa49555693645afb6f048f12f49aeba690 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Mon, 5 Oct 2026 06:35:05 +0800
+Subject: [PATCH] some-fix
+
+
+diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
+index ee41991b5..ea01b3333 100644
+--- a/src/main/java/org/bukkit/craftbukkit/Main.java
++++ b/src/main/java/org/bukkit/craftbukkit/Main.java
+@@ -156,7 +156,7 @@ public class Main {
+             }
+ 
+             float javaVersion = Float.parseFloat(System.getProperty("java.class.version"));
+-            if (javaVersion < 56.0) {
++            if (javaVersion < 52.0) {
+                 System.err.println("Unsupported Java detected (" + javaVersion + "). Only Java 8 or higher is supported.");
+                 return;
+             }
+-- 
+2.56.0
+
