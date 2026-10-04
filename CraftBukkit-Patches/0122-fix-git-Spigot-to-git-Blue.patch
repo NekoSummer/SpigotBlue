@@ -1,0 +1,22 @@
+From 3e2cd57ef1080c73bd5d30cc2535edfee6bc6c5b Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Mon, 5 Oct 2026 06:27:59 +0800
+Subject: [PATCH] fix git-Spigot to git-Blue
+
+
+diff --git a/pom.xml b/pom.xml
+index b6854072e..783a7f17f 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -112,7 +112,7 @@
+                     <execution>
+                         <id>ex-spigot</id>
+                         <configuration>
+-                            <format>git-Spigot-%s</format>
++                            <format>git-Blue-%s</format>
+                             <scmDirectory>../</scmDirectory>
+                             <descriptionProperty>spigot.desc</descriptionProperty>
+                         </configuration>
+-- 
+2.56.0
+
