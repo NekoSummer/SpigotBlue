@@ -1,0 +1,24 @@
+From 6a69e94bcef46fcd2cfd1043da83998c8c319bb0 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Tue, 6 Oct 2026 16:57:09 +0800
+Subject: [PATCH] some-fix-and-update-jdk
+
+
+diff --git a/pom.xml b/pom.xml
+index 48d279a8..86263090 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -14,8 +14,8 @@
+ 
+     <properties>
+         <skipTests>true</skipTests>
+-        <maven.compiler.source>8</maven.compiler.source>
+-        <maven.compiler.target>8</maven.compiler.target>
++        <maven.compiler.source>11</maven.compiler.source>
++        <maven.compiler.target>11</maven.compiler.target>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     </properties>
+ 
+-- 
+2.56.0
+
