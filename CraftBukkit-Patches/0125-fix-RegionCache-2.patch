@@ -1,0 +1,63 @@
+From 5b2483a7d1c0ed97d2a772724bd61dd546ab5608 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Wed, 7 Oct 2026 08:52:58 +0800
+Subject: [PATCH] fix-RegionCache-2
+
+
+diff --git a/src/main/java/net/minecraft/server/RegionFileCache.java b/src/main/java/net/minecraft/server/RegionFileCache.java
+index c04ccdf4d..75c594fbd 100644
+--- a/src/main/java/net/minecraft/server/RegionFileCache.java
++++ b/src/main/java/net/minecraft/server/RegionFileCache.java
+@@ -10,7 +10,7 @@ import javax.annotation.Nullable;
+ 
+ public class RegionFileCache {
+ 
+-    public static final ConcurrentHashMap<File, RegionFile> cache = new ConcurrentHashMap<File, RegionFile>();
++    public static final ConcurrentHashMap<File, RegionFile> cache = new ConcurrentHashMap<>();
+ 
+     public static synchronized RegionFile a(File file, int i, int j) {
+         File file1 = new File(file, "region");
+@@ -59,20 +59,16 @@ public class RegionFileCache {
+     // CraftBukkit end
+ 
+     public static synchronized void a() {
+-        Iterator iterator = RegionFileCache.cache.values().iterator();
+-
+-        while (iterator.hasNext()) {
+-            RegionFile regionfile = (RegionFile) iterator.next();
+-
+-            try {
+-                if (regionfile != null) {
++        for (RegionFile regionfile : RegionFileCache.cache.values()) {
++            if (regionfile == null) continue;
++            synchronized (regionfile) {
++                try {
+                     regionfile.close();
++                } catch (IOException e) {
++                    e.printStackTrace();
+                 }
+-            } catch (IOException ioexception) {
+-                ioexception.printStackTrace();
+             }
+         }
+-
+         RegionFileCache.cache.clear();
+     }
+ 
+@@ -95,8 +91,11 @@ public class RegionFileCache {
+         RegionFile regionfile = a(file, i, j);
+ 
+         DataOutputStream dataoutputstream = regionfile.c(i & 31, j & 31);
+-        NBTCompressedStreamTools.a(nbttagcompound, (java.io.DataOutput) dataoutputstream);
+-        dataoutputstream.close();
++        try {
++            NBTCompressedStreamTools.a(nbttagcompound, (java.io.DataOutput) dataoutputstream);
++        } finally {
++            dataoutputstream.close();
++        }
+     }
+ 
+     public static synchronized boolean chunkExists(File file, int i, int j) {
+-- 
+2.56.0
+
