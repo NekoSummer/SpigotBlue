@@ -1,0 +1,22 @@
+From fac250f7ccd5fc74be4d1e250cce4fe789208223 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Thu, 8 Oct 2026 16:29:23 +0800
+Subject: [PATCH] update jline to 2.14.6
+
+
+diff --git a/pom.xml b/pom.xml
+index 783a7f17f..96a33ae29 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -45,7 +45,7 @@
+         <dependency>
+             <groupId>jline</groupId>
+             <artifactId>jline</artifactId>
+-            <version>2.12.1</version>
++            <version>2.14.6</version>
+             <scope>compile</scope>
+         </dependency>
+         <dependency>
+-- 
+2.56.0
+
