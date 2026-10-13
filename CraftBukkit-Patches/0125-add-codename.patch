@@ -1,0 +1,65 @@
+From 65b94644b67aeded30e2c83c825ff76f99ec04f9 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Tue, 13 Oct 2026 17:23:27 +0800
+Subject: [PATCH] add codename
+
+
+diff --git a/src/main/java/net/minecraft/server/DedicatedServer.java b/src/main/java/net/minecraft/server/DedicatedServer.java
+index 64a6a681f..70f74b7b5 100644
+--- a/src/main/java/net/minecraft/server/DedicatedServer.java
++++ b/src/main/java/net/minecraft/server/DedicatedServer.java
+@@ -670,6 +670,7 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
+         org.bukkit.plugin.Plugin[] plugins = server.getPluginManager().getPlugins();
+ 
+         result.append(server.getName());
++        result.append(server.getCodename());
+         result.append(" on Bukkit ");
+         result.append(server.getBukkitVersion());
+ 
+diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
+index 7758f2d04..d6ca5dde2 100644
+--- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
++++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
+@@ -165,6 +165,7 @@ import net.md_5.bungee.api.chat.BaseComponent;
+ 
+ public final class CraftServer implements Server {
+     private final String serverName = "SpigotBlue";
++    private final String serverCodename = "Change The World";
+     private final String serverVersion;
+     private final String bukkitVersion = Versioning.getBukkitVersion();
+     private final Logger logger = Logger.getLogger("Minecraft");
+@@ -444,6 +445,11 @@ public final class CraftServer implements Server {
+         return serverName;
+     }
+ 
++    @Override
++    public String getCodename() {
++        return serverCodename;
++    }
++
+     @Override
+     public String getVersion() {
+         return serverVersion + " (MC: " + console.getVersion() + ")";
+diff --git a/src/test/java/org/bukkit/support/DummyServer.java b/src/test/java/org/bukkit/support/DummyServer.java
+index c9fd5e277..886aaee0e 100644
+--- a/src/test/java/org/bukkit/support/DummyServer.java
++++ b/src/test/java/org/bukkit/support/DummyServer.java
+@@ -40,6 +40,15 @@ public class DummyServer implements InvocationHandler {
+                         }
+                     }
+                 );
++            methods.put(
++                    Server.class.getMethod("getCodename"),
++                    new MethodHandler() {
++                        @Override
++                        public Object handle(DummyServer server, Object[] args) {
++                            return DummyServer.class.getName();
++                        }
++                    }
++            );
+             methods.put(
+                     Server.class.getMethod("getVersion"),
+                     new MethodHandler() {
+-- 
+2.56.0
+
