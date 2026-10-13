@@ -1,0 +1,29 @@
+From ebe24c696c1ac3d5520d1645367a9ea6860379b9 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Tue, 13 Oct 2026 12:32:18 +0800
+Subject: [PATCH] backup
+
+
+diff --git a/pom.xml b/pom.xml
+index 783a7f17f..3665449f0 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -45,13 +45,13 @@
+         <dependency>
+             <groupId>jline</groupId>
+             <artifactId>jline</artifactId>
+-            <version>2.12.1</version>
++            <version>2.14.6</version>
+             <scope>compile</scope>
+         </dependency>
+         <dependency>
+             <groupId>org.ow2.asm</groupId>
+             <artifactId>asm</artifactId>
+-            <version>7.1</version>
++            <version>9.10.1</version>
+             <scope>compile</scope>
+         </dependency>
+         <dependency>
+-- 
+2.56.0
+
