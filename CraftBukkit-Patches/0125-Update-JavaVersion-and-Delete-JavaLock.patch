@@ -1,0 +1,50 @@
+From 3d9d9878125327745a737dc67260f6f4188d951c Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Wed, 14 Oct 2026 19:49:20 +0800
+Subject: [PATCH] Update JavaVersion and Delete JavaLock
+
+
+diff --git a/pom.xml b/pom.xml
+index 3665449f0..901e96d37 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -18,8 +18,8 @@
+         <buildtag.prefix>git-Bukkit-</buildtag.prefix>
+         <buildtag.suffix></buildtag.suffix>
+         <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
+-        <maven.compiler.source>8</maven.compiler.source>
+-        <maven.compiler.target>8</maven.compiler.target>
++        <maven.compiler.source>11</maven.compiler.source>
++        <maven.compiler.target>11</maven.compiler.target>
+     </properties>
+ 
+     <parent>
+@@ -176,7 +176,7 @@
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-shade-plugin</artifactId>
+-                <version>3.1.1</version>
++                <version>3.5.3</version>
+                 <executions>
+                     <execution>
+                         <phase>package</phase>
+diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
+index ea01b3333..663b49c69 100644
+--- a/src/main/java/org/bukkit/craftbukkit/Main.java
++++ b/src/main/java/org/bukkit/craftbukkit/Main.java
+@@ -155,12 +155,6 @@ public class Main {
+                 return;
+             }
+ 
+-            float javaVersion = Float.parseFloat(System.getProperty("java.class.version"));
+-            if (javaVersion < 52.0) {
+-                System.err.println("Unsupported Java detected (" + javaVersion + "). Only Java 8 or higher is supported.");
+-                return;
+-            }
+-
+             try {
+                 // This trick bypasses Maven Shade's clever rewriting of our getProperty call when using String literals
+                 String jline_UnsupportedTerminal = new String(new char[] {'j','l','i','n','e','.','U','n','s','u','p','p','o','r','t','e','d','T','e','r','m','i','n','a','l'});
+-- 
+2.56.0
+

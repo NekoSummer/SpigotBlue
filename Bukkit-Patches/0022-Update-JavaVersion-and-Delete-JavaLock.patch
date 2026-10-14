@@ -1,0 +1,24 @@
+From f7d001c8bcf8dbce119c0a58114bcee3e7a8c1ad Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Wed, 14 Oct 2026 19:49:20 +0800
+Subject: [PATCH] Update JavaVersion and Delete JavaLock
+
+
+diff --git a/pom.xml b/pom.xml
+index 48d279a8..86263090 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -14,8 +14,8 @@
+ 
+     <properties>
+         <skipTests>true</skipTests>
+-        <maven.compiler.source>8</maven.compiler.source>
+-        <maven.compiler.target>8</maven.compiler.target>
++        <maven.compiler.source>11</maven.compiler.source>
++        <maven.compiler.target>11</maven.compiler.target>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     </properties>
+ 
+-- 
+2.56.0
+
