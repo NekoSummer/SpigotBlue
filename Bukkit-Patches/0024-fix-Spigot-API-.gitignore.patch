@@ -1,0 +1,21 @@
+From 47971490dbec5ba66908cd689f4044e58e5d09ad Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Wed, 14 Oct 2026 20:34:40 +0800
+Subject: [PATCH] fix Spigot-API/.gitignore
+
+
+diff --git a/.gitignore b/.gitignore
+index edf9e5c3..01817462 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -11,6 +11,7 @@
+ 
+ # maven
+ /target
++dependency-reduced-pom.xml
+ 
+ # vim
+ .*.sw[a-p]
+-- 
+2.56.0
+
