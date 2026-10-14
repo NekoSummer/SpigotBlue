@@ -1,0 +1,22 @@
+From cf71b17a2b03ff53d12d9c229ebd24bc6eedcc4f Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Wed, 14 Oct 2026 20:26:19 +0800
+Subject: [PATCH] Update log4j2.xml
+
+
+diff --git a/src/main/resources/log4j2.xml b/src/main/resources/log4j2.xml
+index c99aedb40..433b0304a 100644
+--- a/src/main/resources/log4j2.xml
++++ b/src/main/resources/log4j2.xml
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <Configuration status="WARN" packages="com.mojang.util">
+     <Appenders>
+-        <Console name="WINDOWS_COMPAT" target="SYSTEM_OUT"></Console>
++        <Console name="WINDOWS_COMPAT" target="SYSTEM_OUT" />
+         <Queue name="TerminalConsole">
+             <PatternLayout pattern="[%d{HH:mm:ss} %level]: %msg{nolookups}%n" />
+         </Queue>
+-- 
+2.56.0
+
