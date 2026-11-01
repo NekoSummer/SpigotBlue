@@ -1,0 +1,22 @@
+From 3de7d5c4c21442a7f2b6b233a1996bf61e03bce3 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Sun, 1 Nov 2026 17:23:21 +0800
+Subject: [PATCH] update VersionCommand
+
+
+diff --git a/src/main/java/org/bukkit/command/defaults/VersionCommand.java b/src/main/java/org/bukkit/command/defaults/VersionCommand.java
+index 846fc232..dad0b646 100644
+--- a/src/main/java/org/bukkit/command/defaults/VersionCommand.java
++++ b/src/main/java/org/bukkit/command/defaults/VersionCommand.java
+@@ -44,7 +44,7 @@ public class VersionCommand extends BukkitCommand {
+ 
+         if (args.length == 0) {
+             sender.sendMessage("This server is running " + ChatColor.AQUA + Bukkit.getName() + ChatColor.RESET + " version " + Bukkit.getVersion() + " (Implementing API version " + Bukkit.getBukkitVersion() + ")");
+-            sender.sendMessage("This is a final build for 1.13.2 by " + ChatColor.AQUA + "XinYueNeko(https://github.com/NewmoomCat)" + ChatColor.RESET);
++            sender.sendMessage("This is a final build for 1.13.2 by" + ChatColor.AQUA + " XinYueNeko " + ChatColor.RESET + "(https://github.com/NewmoomCat)");
+         } else {
+             StringBuilder name = new StringBuilder();
+ 
+-- 
+2.56.0
+
