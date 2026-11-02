@@ -1,8 +1,16 @@
-Spigot
+> Source-only patch set. No full jar, no decompiled or third-party closed-source classes. Build it yourself.
+
+SpigotBlue
 ======
 
-High performance Minecraft server implementation
+Unofficial **source-only patch set** for Spigot/CraftBukkit 1.13.2.
 
+This repo contains only my own source-level patches. It does **not** include a full server jar, decompiled code, or third-party closed-source classes. Build it yourself.
+
+- Base: Spigot 1.13.2 (build/commit: ____)
+- License: GPLv3 (consistent with Spigot)
+- Requires: Java 8, Maven 3
+- Not affiliated with Mojang or Spigot
 
 How To
 -----------
