@@ -1,0 +1,31 @@
+From ff21a38b1ff56b8d8d56040d88f54bb5cb41eeb6 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Mon, 2 Nov 2026 19:55:27 +0800
+Subject: [PATCH] update mvn plugin
+
+
+diff --git a/pom.xml b/pom.xml
+index f6831bbd0..0017e8afb 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -107,7 +107,7 @@
+             <plugin>
+                 <groupId>net.md-5</groupId>
+                 <artifactId>scriptus</artifactId>
+-                <version>0.2</version>
++                <version>0.5.1</version>
+                 <executions>
+                     <execution>
+                         <id>ex-spigot</id>
+@@ -271,7 +271,7 @@
+                     <plugin>
+                         <groupId>org.codehaus.mojo</groupId>
+                         <artifactId>animal-sniffer-maven-plugin</artifactId>
+-                        <version>1.17</version>
++                        <version>1.28</version>
+                         <executions>
+                             <execution>
+                                 <phase>process-classes</phase>
+-- 
+2.56.0
+

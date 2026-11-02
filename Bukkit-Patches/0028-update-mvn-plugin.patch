@@ -1,0 +1,31 @@
+From e83d6a4f466da614342fe90ed7a94ea46b4fd474 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Mon, 2 Nov 2026 19:55:28 +0800
+Subject: [PATCH] update mvn plugin
+
+
+diff --git a/pom.xml b/pom.xml
+index 2cf5ca20..a60968a5 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -180,7 +180,7 @@
+                     <plugin>
+                         <groupId>org.codehaus.mojo</groupId>
+                         <artifactId>animal-sniffer-maven-plugin</artifactId>
+-                        <version>1.17</version>
++                        <version>1.28</version>
+                         <executions>
+                             <execution>
+                                 <phase>process-classes</phase>
+@@ -192,7 +192,7 @@
+                         <configuration>
+                             <signature>
+                                 <groupId>org.codehaus.mojo.signature</groupId>
+-                                <artifactId>java17</artifactId>
++                                <artifactId>java18</artifactId>
+                                 <version>1.0</version>
+                             </signature>
+                         </configuration>
+-- 
+2.56.0
+
