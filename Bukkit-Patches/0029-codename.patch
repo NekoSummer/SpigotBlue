@@ -1,0 +1,71 @@
+From 7f7d99864e632cea052b4e3720401ee5cadad3f8 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Tue, 10 Nov 2026 20:12:54 +0800
+Subject: [PATCH] codename
+
+
+diff --git a/src/main/java/org/bukkit/Bukkit.java b/src/main/java/org/bukkit/Bukkit.java
+index a3c4b148..4a460449 100644
+--- a/src/main/java/org/bukkit/Bukkit.java
++++ b/src/main/java/org/bukkit/Bukkit.java
+@@ -88,7 +88,7 @@ public final class Bukkit {
+         }
+ 
+         Bukkit.server = server;
+-        server.getLogger().info("This server is running " + getName() + " version " + getVersion() + " (Implementing API version " + getBukkitVersion() + ")");
++        server.getLogger().info("This server is running " + getName() + "(\"" + getCodename() + "\")" + " version " + getVersion() + " (Implementing API version " + getBukkitVersion() + ")");
+     }
+ 
+     /**
+@@ -101,6 +101,16 @@ public final class Bukkit {
+         return server.getName();
+     }
+ 
++    /**
++     * Gets the codename of this server implementation.
++     *
++     * @return codename of this server implementation
++     */
++    @NotNull
++    public static String getCodename() {
++        return server.getCodename();
++    }
++
+     /**
+      * Gets the version string of this server implementation.
+      *
+diff --git a/src/main/java/org/bukkit/Server.java b/src/main/java/org/bukkit/Server.java
+index 2767f4e5..c672aa80 100644
+--- a/src/main/java/org/bukkit/Server.java
++++ b/src/main/java/org/bukkit/Server.java
+@@ -84,6 +84,14 @@ public interface Server extends PluginMessageRecipient {
+     @NotNull
+     public String getName();
+ 
++    /**
++     * Gets the codename of this server implementation.
++     *
++     * @return codename of this server implementation
++     */
++    @NotNull
++    public String getCodename();
++
+     /**
+      * Gets the version string of this server implementation.
+      *
+diff --git a/src/main/java/org/bukkit/command/defaults/VersionCommand.java b/src/main/java/org/bukkit/command/defaults/VersionCommand.java
+index dad0b646..1ad6c1ff 100644
+--- a/src/main/java/org/bukkit/command/defaults/VersionCommand.java
++++ b/src/main/java/org/bukkit/command/defaults/VersionCommand.java
+@@ -44,7 +44,7 @@ public class VersionCommand extends BukkitCommand {
+ 
+         if (args.length == 0) {
+             sender.sendMessage("This server is running " + ChatColor.AQUA + Bukkit.getName() + ChatColor.RESET + " version " + Bukkit.getVersion() + " (Implementing API version " + Bukkit.getBukkitVersion() + ")");
+-            sender.sendMessage("This is a final build for 1.13.2 by" + ChatColor.AQUA + " XinYueNeko " + ChatColor.RESET + "(https://github.com/NewmoomCat)");
++            sender.sendMessage("This is a final build for 1.13.2 by" + ChatColor.AQUA + " XinYueNeko " + ChatColor.RESET + "(https://github.com/NewmoomCat) Codename " + ChatColor.AQUA + Bukkit.getCodename() + ChatColor.RESET);
+         } else {
+             StringBuilder name = new StringBuilder();
+ 
+-- 
+2.56.0
+

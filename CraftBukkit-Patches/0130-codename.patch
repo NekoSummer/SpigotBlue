@@ -1,0 +1,25 @@
+From 1190ef72f677a4f84008adc3934dc9b502aa9da0 Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Tue, 10 Nov 2026 20:12:54 +0800
+Subject: [PATCH] codename
+
+
+diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
+index 7758f2d04..5c8524909 100644
+--- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
++++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
+@@ -444,6 +444,11 @@ public final class CraftServer implements Server {
+         return serverName;
+     }
+ 
++    @Override
++    public String getCodename() {
++        return "Navi";
++    }
++
+     @Override
+     public String getVersion() {
+         return serverVersion + " (MC: " + console.getVersion() + ")";
+-- 
+2.56.0
+
