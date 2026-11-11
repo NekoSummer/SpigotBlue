@@ -1,0 +1,29 @@
+From e247ecc82f21e9484dc0bd5b5bd0efa6414da2dc Mon Sep 17 00:00:00 2001
+From: XinYueNeko <3649745663@qq.com>
+Date: Wed, 11 Nov 2026 20:28:29 +0800
+Subject: [PATCH] fix-manifest
+
+
+diff --git a/pom.xml b/pom.xml
+index 0017e8afb..08eda6b98 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -143,12 +143,12 @@
+                     <archive>
+                         <manifestEntries>
+                             <Main-Class>org.bukkit.craftbukkit.Main</Main-Class>
+-                            <Implementation-Title>CraftBukkit</Implementation-Title>
++                            <Implementation-Title>SpigotBlue</Implementation-Title>
+                             <Implementation-Version>${spigot.desc}${craftbukkit.desc}</Implementation-Version>
+                             <Implementation-Vendor>${maven.build.timestamp}</Implementation-Vendor>
+-                            <Specification-Title>Bukkit</Specification-Title>
++                            <Specification-Title>Summer</Specification-Title>
+                             <Specification-Version>${api.version}</Specification-Version>
+-                            <Specification-Vendor>Bukkit Team</Specification-Vendor>
++                            <Specification-Vendor>NekoSummer Team</Specification-Vendor>
+                         </manifestEntries>
+                         <manifestSections>
+                             <manifestSection>
+-- 
+2.56.0
+
